@@ -1,0 +1,38 @@
+{
+
+  "source": "/src/index.html",
+
+  "scripts": {
+
+    "start": "parcel",
+
+    "clear": "rm -rf .parcel-cache dist",
+    
+    "build": "parcel build",
+
+    "deploy": "gh-pages -d dist"
+
+  },
+
+  "devDependencies": {
+
+    "@parcel/transformer-sass": "^2.8.3",
+
+    "parcel": "^2.8.3"
+
+  },
+
+  "dependencies": {
+
+    "feather-icons": "^4.29.0",
+
+    "gh-pages": "^5.0.0",
+
+    "reset-css": "^5.0.1",
+
+    "sass": "^1.57.1"
+
+  }
+
+}
+
