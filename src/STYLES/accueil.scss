@@ -1,0 +1,7 @@
+@use "./colors.scss";
+
+body{
+    background: colors.$col-papier-old,url(../MEDIA/texturepapier.webp);
+    background-blend-mode:overlay;
+}
+
