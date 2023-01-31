@@ -1,7 +1,24 @@
 @use "./colors.scss";
 
-body{
+.accueil{
     background: colors.$col-papier-old,url(../MEDIA/texturepapier.webp);
     background-blend-mode:overlay;
+    font-family: special;
+    font-weight: bold;
+    header{
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        display: flex;
+        
+    }
+    h1{
+        text-transform: uppercase;
+        font-size: 1.5em;
+
+    }
+    img{
+        width:5rem;
+        
+    }
 }
 
