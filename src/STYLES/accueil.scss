@@ -7,8 +7,10 @@
     font-weight: bold;
     header{
         padding-top: 1rem;
+        padding-left: 1rem;
         padding-bottom: 1rem;
-        display: flex;
+        border: 0.2rem colors.$col-black-old solid;
+        margin: 0.5rem;
         
     }
     h1{
@@ -19,6 +21,18 @@
     img{
         width:5rem;
         
+    }
+    main{
+        padding-top: 1rem;
+        padding-left: 1rem;
+        padding-bottom: 1rem;
+        border: 0.2rem colors.$col-black-old solid;
+        margin: 0.5rem;
+
+    }
+    summary{
+        font-size: 1.5em;
+        margin: 1rem;
     }
 }
 
