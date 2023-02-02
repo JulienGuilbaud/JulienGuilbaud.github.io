@@ -1,28 +1,37 @@
 @use "./colors.scss";
 
-.accueil{
-    background: colors.$col-papier-old,url(../MEDIA/texturepapier.webp);
-    background-blend-mode:overlay;
+.accueil {
+    background: colors.$col-papier-old, url(../MEDIA/texturepapier.webp);
+    background-blend-mode: overlay;
     font-family: special;
     font-weight: bold;
-    header{
+
+    header {
+        
         padding-top: 1rem;
         padding-left: 1rem;
         padding-bottom: 1rem;
         border: 0.2rem colors.$col-black-old solid;
         margin: 0.5rem;
-        
+        margin-top: 0;
+
+
     }
-    h1{
+
+    h1 {
         text-transform: uppercase;
         font-size: 1.5em;
 
     }
-    img{
-        width:5rem;
-        
+
+    img {
+        width: 5rem;
+
     }
-    main{
+
+    main {
+        background: colors.$col-papier-old, url(../MEDIA/texturepapier.webp);
+        background-blend-mode: overlay;
         padding-top: 1rem;
         padding-left: 1rem;
         padding-bottom: 1rem;
@@ -30,9 +39,14 @@
         margin: 0.5rem;
 
     }
-    summary{
+
+    summary {
         font-size: 1.5em;
         margin: 1rem;
-    }
-}
 
+    }
+
+
+
+
+}
