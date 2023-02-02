@@ -1,11 +1,12 @@
 @use 'reset-css';
 
 @use './global.scss';
-@use "./mixins.scss";
+@use "./mixin.scss";
 @use "./colors.scss";
 @use "./font.scss";
 @use "./accueil.scss";
 @use "./ariane.scss";
 @use "./obligation.scss";
 @use "./footer.scss";
+@use "./message.scss";
 

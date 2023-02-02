@@ -7,7 +7,7 @@
     font-weight: bold;
 
     header {
-        
+
         padding-top: 1rem;
         padding-left: 1rem;
         padding-bottom: 1rem;
@@ -15,23 +15,20 @@
         margin: 0.5rem;
         margin-top: 0;
 
+        h1 {
+            text-transform: uppercase;
+            font-size: 1.5em;
+
+        }
+
+        img{width: 5rem;}
 
     }
 
-    h1 {
-        text-transform: uppercase;
-        font-size: 1.5em;
-
-    }
-
-    img {
-        width: 5rem;
-
-    }
 
     main {
-        background: colors.$col-papier-old, url(../MEDIA/texturepapier.webp);
-        background-blend-mode: overlay;
+
+
         padding-top: 1rem;
         padding-left: 1rem;
         padding-bottom: 1rem;
