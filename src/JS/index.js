@@ -2,9 +2,7 @@ import feather from 'feather-icons';
 
 feather.replace();
 
-// ——————————————————————————————————————————————————
-// TextScramble
-// ——————————————————————————————————————————————————
+/* effet scramble matrix */
 
 class TextScramble {
     constructor(el) {
@@ -63,17 +61,13 @@ class TextScramble {
 /* phrase culte */
   
   const phrases = [
-    'Jimmy,',
-
-    'Je te ferai voir un monde',
-
-    'un monde sans lois ni contrôle, sans limites ni frontières',
-
-    'un monde où tout est possible.',
     
-    'Ce que nous en ferons ne dépendra que de nous.',
 
-    'Et rase moi cette barbe mon doudou.'
+
+    
+    'Hello World.',
+
+    'Bonjour le monde.'
 
   ]
   
