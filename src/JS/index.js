@@ -1,3 +1,11 @@
+/* btn impression */
+
+function printPage() {
+  window.print();
+}
+
+/* icone feather */
+
 import feather from 'feather-icons';
 
 feather.replace();
@@ -83,3 +91,4 @@ class TextScramble {
   }
   
   next()
+

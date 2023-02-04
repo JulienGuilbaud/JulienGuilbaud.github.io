@@ -1,19 +1,47 @@
+@use "./colors.scss";
+@use "./mixin";
+
+
 .cv {
     display: flex;
+    flex-direction: column;
     font-family: lexend;
     background-image: radial-gradient(27% 185%, #F9F6F1 0%, #D7D0C5 100%);
-    &__para{
+    padding-top: 0.75rem;
+
+    @include mixin.tablet {
+        flex-direction: row;
+
+    }
+    @media print{
+        flex-direction: row;
+    }
+
+
+
+    &__para {
         padding: 0.8rem;
-        &__centre{
+
+        &__centre {
             text-align: center;
-            figure{
-                margin:1rem ;
+
+            figure {
+                margin: 1rem;
             }
         }
+        &__print{
+            text-align: center;
+            @media print{
+                display: none;
+            }
+            
+        }
+
     }
+
     &__gauche {
-        width: 35%;
-        margin-left: 1rem;
+        width: 85%;
+        margin-left: 0.5rem;
         border-top: 0;
         border-left: 0;
         border-right: 0.25rem solid;
@@ -21,21 +49,38 @@
         border-image-slice: 1;
         border-image-source: linear-gradient(to left, #B2FF59, #00C853);
         margin-bottom: 0.5rem;
+
+        @include mixin.tablet {
+            width: 40%;
+
+        }
+        @media print{
+            width: 40%;;
+        }
+
     }
+
     &__photo {
-        margin-bottom: 0.5rem;
+        
 
         img {
-            
+
             filter: drop-shadow(0 0 1rem green);
             border-radius: 50%;
-            
+            @media print{
+                width: 90%;
+                  
+            }
+
         }
+
         h2 {
+            margin: 1.5rem;
             font-size: 2em;
             color: green;
         }
     }
+
     &__information {
         h3 {
             font-size: 1.5em;
@@ -49,15 +94,18 @@
             margin-top: 0.5rem;
             margin-bottom: 0.5rem;
         }
+
         strong {
- 
+
             font-weight: bold;
             margin-bottom: 0.25rem;
         }
+
         em {
             font-style: italic;
 
         }
+
         a {
             color: black;
             text-decoration: none;
@@ -65,27 +113,37 @@
     }
 
     &__droite {
-        width: 65%;
+        width: 90%;
+        margin-left: 0.5rem;
         border-top: 0;
         border-left: 0.25rem solid;
         border-right: 0;
         border-bottom: 0;
         border-image-slice: 1;
-        border-image-source: linear-gradient(to left,#00C853,#B2FF59);
+        border-image-source: linear-gradient(to left, #00C853, #B2FF59);
         margin-bottom: 0.5rem;
+        @include mixin.tablet {
+            margin-left: 0;
+    
+        }
+        @media print{
+            margin-left: 0;
+        }
 
-        h2{
+        h2 {
             font-size: 2em;
             font-weight: bold;
-            color: green ;
+            color: green;
             text-align: center;
         }
+
         em {
             font-style: italic;
             text-align: center;
             display: block;
         }
-        h3{
+
+        h3 {
             font-size: 1.5em;
             text-transform: uppercase;
             border-top: 0;
@@ -93,13 +151,15 @@
             border-right: 0;
             border-bottom: 0.5rem solid;
             border-image-slice: 1;
-            border-image-source: linear-gradient(to left,#00C853,#B2FF59);
+            border-image-source: linear-gradient(to left, #00C853, #B2FF59);
             margin-top: 0.5rem;
-            margin-bottom: 0.5rem; 
+            margin-bottom: 0.5rem;
         }
-        h4{
+
+        h4 {
             font-weight: bold;
         }
 
     }
 }
+
