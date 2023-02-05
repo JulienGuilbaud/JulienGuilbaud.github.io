@@ -6,21 +6,22 @@
     display: flex;
     flex-direction: column;
     font-family: lexend;
-    background-image: radial-gradient(27% 185%, #F9F6F1 0%, #D7D0C5 100%);
+    background-image:colors.$col-fond-cv;
     padding-top: 0.75rem;
 
     @include mixin.tablet {
         flex-direction: row;
 
     }
-    @media print{
+
+    @media print {
         flex-direction: row;
     }
 
 
 
     &__para {
-        padding: 0.8rem;
+        padding: 0.5rem;
 
         &__centre {
             text-align: center;
@@ -29,51 +30,64 @@
                 margin: 1rem;
             }
         }
-        &__print{
+
+        &__print {
             text-align: center;
-            @media print{
+
+            @media print {
                 display: none;
             }
-            
+
         }
-        &__qr{
-            margin-left: 0.75rem;
+
+        &__qr {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 3.5rem;
             width: 50%;
+            @media print {
+                margin-left: 4rem;
+            }
+
         }
 
     }
 
     &__gauche {
         width: 85%;
-        margin-left: 0.5rem;
+        margin-left: 0.75rem;
         border-top: 0;
         border-left: 0;
         border-right: 0.25rem solid;
         border-bottom: 0;
         border-image-slice: 1;
-        border-image-source: linear-gradient(to left, #B2FF59, #00C853);
+        border-image-source: colors.$col-border-cv1;
         margin-bottom: 0.5rem;
 
         @include mixin.tablet {
             width: 40%;
 
         }
-        @media print{
-            width: 40%;;
+
+        @media print {
+            width: 40%;
+            ;
         }
 
     }
 
     &__photo {
-        
+
 
         img {
 
             filter: drop-shadow(0 0 1rem green);
             border-radius: 50%;
-            @media print{
+
+            @media print {
                 width: 90%;
-                  
+
             }
 
         }
@@ -94,7 +108,7 @@
             border-right: 0;
             border-bottom: 0.5rem solid;
             border-image-slice: 1;
-            border-image-source: linear-gradient(to left, #B2FF59, #00C853);
+            border-image-source:colors.$col-border-cv1;
             margin-top: 0.5rem;
             margin-bottom: 0.5rem;
         }
@@ -124,13 +138,15 @@
         border-right: 0;
         border-bottom: 0;
         border-image-slice: 1;
-        border-image-source: linear-gradient(to left, #00C853, #B2FF59);
+        border-image-source:colors.$col-border-cv2;
         margin-bottom: 0.5rem;
+
         @include mixin.tablet {
             margin-left: 0;
-    
+
         }
-        @media print{
+
+        @media print {
             margin-left: 0;
         }
 
@@ -155,7 +171,7 @@
             border-right: 0;
             border-bottom: 0.5rem solid;
             border-image-slice: 1;
-            border-image-source: linear-gradient(to left, #00C853, #B2FF59);
+            border-image-source: colors.$col-border-cv2;
             margin-top: 0.5rem;
             margin-bottom: 0.5rem;
         }
@@ -166,4 +182,3 @@
 
     }
 }
-

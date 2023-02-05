@@ -53,3 +53,9 @@
       @content;
     }
   }
+
+  @mixin imp {
+    @media print {
+      @content;
+    }
+  }

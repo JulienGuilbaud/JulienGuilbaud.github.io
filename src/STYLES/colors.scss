@@ -3,5 +3,10 @@ $col-papier:linear-gradient(to bottom,rgba(0,0,0,.6) 0%,rgba(0,0,0,.6) 100%) ;
 
 $col-papier-old:linear-gradient(to bottom,rgba(0,0,0,.4) 0%,transparent 180px),linear-gradient(to right,transparent 50%,rgba(0,0,0,.7) 100%),linear-gradient(to top,rgba(0,0,0,.4) 0%,transparent 400px) ;
 
-$col-black-old:#1c1c1c
+$col-black-old:#1c1c1c;
 
+$col-fond-cv:radial-gradient(27% 185%, #F9F6F1 0%, #D7D0C5 100%);
+
+$col-border-cv1:linear-gradient(to left, #B2FF59, #00C853);
+
+$col-border-cv2:linear-gradient(to left, #00C853, #B2FF59);
