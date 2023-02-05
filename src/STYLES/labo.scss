@@ -1,0 +1,35 @@
+@use "./colors.scss";
+@use "./mixin";
+
+.labo{
+    section{
+        display: flex;
+        flex-direction: column;
+        @include mixin.tablet {
+            flex-direction: row;
+            flex-wrap: wrap;
+
+        }
+    }
+    &__card{
+        margin:0.5rem;
+        margin-bottom: 0.5rem;
+        padding: 0.5rem;
+        border: 0.25rem solid colors.$col-black-old;
+        max-width: 20rem;
+
+        h3{
+            
+            text-align: center;
+            background:colors.$col-black-old ;
+            color: white;
+            padding: 0.25rem;
+        }
+        figcaption{
+            border: 0.25rem solid colors.$col-black-old;
+
+        }
+
+
+    }
+}

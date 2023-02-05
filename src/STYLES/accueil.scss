@@ -6,6 +6,17 @@
     font-family: special;
     font-weight: bold;
 
+    strong {
+        display: inline-block;
+        color: red;
+        text-transform: uppercase;
+        font-weight: bold;
+        padding: 0.25rem;
+        border: red solid 0.25rem;
+        border-radius: 10%;
+        transform: rotate(33deg)
+    }
+
     header {
 
         padding-top: 1rem;
@@ -21,7 +32,9 @@
 
         }
 
-        img{width: 5rem;}
+        img {
+            width: 5rem;
+        }
 
     }
 
