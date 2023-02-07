@@ -1,8 +1,6 @@
 /* btn impression */
 
-function printPage() {
-  window.print();
-}
+
 
 /* icone feather */
 
