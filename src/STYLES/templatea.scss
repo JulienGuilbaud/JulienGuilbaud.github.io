@@ -2,8 +2,7 @@
 @use "./mixin";
 
 .temp {
-  width: 100%;
-  box-sizing: border-box;
+
 }
 
 .temp-header {
@@ -108,23 +107,10 @@
 }
 
 
-.temp-back {
-  position: absolute;
-  z-index: -11;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(to right, white, black);
 
-  @include mixin.laptopL {}
-
-
-
-
-}
 
 .temp-main__index {
   position: relative;
-
   height: 23rem;
   margin-bottom: 2rem;
 
