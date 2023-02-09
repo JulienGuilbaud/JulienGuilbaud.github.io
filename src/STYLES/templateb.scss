@@ -1,0 +1,110 @@
+@use "./colors.scss";
+@use "./mixin";
+
+.tempb {
+    font-family: lexend;
+    background-color: #CDDCDC;
+    background-image:
+        radial-gradient(at 50% 100%, rgba(255, 255, 255, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.25) 0%, rgba(0, 0, 0, 0.25) 100%);
+    background-blend-mode: screen, overlay;
+
+    &__header {
+        width: 100%;
+        
+       
+        border-radius: 0.5rem;
+        background: rgb(26, 9, 121);
+        background: radial-gradient(circle, rgba(26, 9, 121, 1) 30%, rgba(98, 0, 255, 1) 60%, rgba(2, 0, 36, 1) 90%);
+        height: 35rem; /* topttpttpptptppt */
+        
+        position: relative;
+        z-index: -1;
+        
+
+        h1 {
+            font-size: 3em;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            padding-top: 10rem;
+            padding-bottom: 0.5rem;
+
+        }
+
+        h2 {
+            font-size: 1.5em;
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+
+        }
+    }
+
+    &__main {
+        position: absolute;
+        bottom: 0;
+        width: 80%;/* dlhjlhjldjhldjhlkdjklh */
+        margin: 10rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 3rem;
+        
+
+        
+
+        &__card {
+            padding: 1rem;
+            max-width: 22rem;
+            border-radius: 0.5rem;
+            background: linear-gradient(145deg, #e6e6e6, #ffffff);
+            box-shadow: 0.5rem 0.5rem 1rem #666666,
+                0.5rem 0.5rem 1rem #ffffff;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+
+            h3 {
+                color: purple;
+                font-weight: bold;
+                font-size: 1.2em;
+                padding: 1rem;
+            }
+
+            h4 {
+                padding: 0.5rem;
+                font-size: 2em;
+                font-weight: bolder;
+            }
+            p{
+                padding: 0.5rem;
+            }
+            ul{padding: 0.5rem;
+                li{
+                    padding: 0.5rem;
+                    
+                }
+            }
+            button{
+                display:block;
+                padding: 1rem;
+                border: transparent;
+                border-radius: 0.5rem;
+                
+                background-color: purple;
+                color: white;
+                margin:auto ;
+                width: 60%;
+
+            }
+        }
+    }
+    footer{
+        width: 50%;
+        margin: auto;
+        text-align: center;
+        padding: 15rem;
+    }
+}
