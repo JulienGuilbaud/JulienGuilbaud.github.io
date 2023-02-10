@@ -10,13 +10,13 @@
     background-blend-mode: screen, overlay;
 
     &__header {
-        width: 100%;
+        width: 100%;/* ftyfutfuytf */
         
        
         border-radius: 0.5rem;
         background: rgb(26, 9, 121);
         background: radial-gradient(circle, rgba(26, 9, 121, 1) 30%, rgba(98, 0, 255, 1) 60%, rgba(2, 0, 36, 1) 90%);
-        height: 35rem; /* topttpttpptptppt */
+        height: 45rem; /* topttpttpptptppt */
         
         position: relative;
         z-index: -1;
@@ -42,14 +42,58 @@
     }
 
     &__main {
-        position: absolute;
-        bottom: 0;
-        width: 80%;/* dlhjlhjldjhldjhlkdjklh */
-        margin: 10rem;
+        display: flex;
+
+        
+        
+        width: 85%;/* dlhjlhjldjhldjhlkdjklh */
+        margin: auto;/* gsdgsgs */
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
         gap: 3rem;
+        @include mixin.mobileM {
+       
+                      }
+        
+          @include mixin.mobileL {
+          
+          }
+        
+          @include mixin.tablet {
+          
+
+      
+        
+          }
+        
+          @include mixin.laptop {
+            
+          }
+        
+          @include mixin.laptopL {
+         
+          }
+        
+          @include mixin.laptopL {
+          
+        
+        
+          }
+        
+          @include mixin.workM {
+         
+        
+        
+        
+          }
+        
+          @include mixin.workL {
+            
+        
+        
+        
+          }
         
 
         
@@ -102,9 +146,12 @@
         }
     }
     footer{
-        width: 50%;
-        margin: auto;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        width: 100%;
+        margin:auto;
         text-align: center;
-        padding: 15rem;
+        
+        
     }
 }
