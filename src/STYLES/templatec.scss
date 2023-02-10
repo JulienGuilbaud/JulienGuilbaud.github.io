@@ -1,0 +1,91 @@
+@use "./colors.scss";
+@use "./mixin";
+
+.tempc {
+    background:
+        linear-gradient(90deg, #7E898F 0%, #636C75 100%),
+        radial-gradient(at top, rgba(255, 255, 255, 0.50) 0%, rgba(0, 0, 0, 0.55) 100%),
+        radial-gradient(at top, rgba(255, 255, 255, 0.50) 0%, rgba(0, 0, 0, 0.08) 63%);
+    background-blend-mode: multiply, screen;
+    font-family: lexend;
+
+    &__header {
+        width: 90%;
+        margin: auto;
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.3),
+                -2px -2px 0.25rem rgba(255, 255, 255, 0.3)
+        }
+    }
+
+    &__main {
+        width: 90%;
+        margin: auto;
+
+        &__card {
+            background: linear-gradient(145deg, #272727, #202020);
+box-shadow:  5px 5px 10px #0e0e0e,
+             -5px -5px 10px #3a3a3a;
+             border-radius: 1rem;
+             max-width: 18rem;
+             margin: auto;
+
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: left;
+                padding: 1rem;
+
+                h2 {
+                    text-align: center;
+                    padding: 0.5rem;
+                    font-weight: bold;
+                    font-size: 1.5em;
+                    text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.3),
+                        -1px -1px 0.25rem rgba(255, 255, 255, 0.3)
+                }
+
+                input {
+                    margin: 0.5rem;
+                    padding: 0.5rem;
+                    border-radius: 1rem;
+                    border: transparent;
+                    background: #242424;
+                    box-shadow: inset 5px 5px 10px #0e0e0e,
+                        inset -5px -5px 10px #3a3a3a;
+                }
+                div{
+                    padding: 0.5rem;
+                    label{
+                        font-weight: bold;
+                        text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.3),
+                        -1px -1px 0.25rem rgba(255, 255, 255, 0.3) 
+                    }
+                    input{
+                        width: 1rem;
+                   
+                    }
+                }
+                button{
+                    background: linear-gradient(145deg, #1a1a1a, #161616);
+                    box-shadow: 6px 6px 12px #0a0a0a, -3px -3px 6px #262626;
+                    color: white;
+                    padding: 0.5rem;
+                    border: transparent;
+                    border-radius: 1rem;
+
+                }
+
+
+
+
+            }
+
+        }
+
+    }
+}
