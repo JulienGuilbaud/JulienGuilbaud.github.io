@@ -49,18 +49,14 @@
 
         @include mixin.tablet {
             position: absolute;
-            bottom: 0;
+            top: 22.5rem;
         }
 
         @include mixin.laptop {
-            bottom: 4rem;
+            top: 17rem;
+            
         }
 
-        @include mixin.workM {
-            bottom: 15rem;
-        }
-
-        @include mixin.workL {}
 
         &__card {
 

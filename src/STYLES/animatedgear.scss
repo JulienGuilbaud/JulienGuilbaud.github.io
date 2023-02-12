@@ -1,0 +1,151 @@
+@use "./colors.scss";
+@use "./mixin";
+
+@keyframes clockwise {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes counter-clockwise {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+  
+  .gearbox {
+    width: 16.5rem;
+    height: 11.5rem;
+    position: relative;
+       
+  }
+  .gear {
+    position: absolute;
+    height: 3.75rem;
+    width: 3.75rem; 
+
+  }
+  
+  .gear.large {
+    height:7.5rem;
+    width:7.5rem;
+    border-radius:3.75rem;
+  }
+  
+  .gear.large:after {
+    height:6rem;
+    width:6rem;
+    border-radius: 3rem;
+    margin-left: 3rem;
+    margin-top: 3rem;
+  }
+  
+  .gear.one {
+    top: 0.75rem;
+    left:0.65rem;
+  }
+  
+  .gear.two {
+    top:3.8rem;
+    left:3.75rem;
+  }
+  
+  .gear.three {
+    top:6.9rem;
+    left:0.65rem;
+  }
+  
+  .gear.four {
+    top:0.8rem;
+    left: 8rem;
+  }
+  
+  .gear:after {
+    content: "";
+    position: absolute;
+    height:2.25rem;
+    width:2.25rem;
+    border-radius:2.25rem;
+    background:url(../MEDIA/texturepapier.webp);
+    /* ajustement centre big gear */
+    top:-2.25rem;
+    left:-2.25rem;
+    /* ajustement centre gear position */
+    margin-left:3rem;
+    margin-top:3rem;
+  }
+  
+  .gear-inner {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background:colors.$col-black-old;
+    border-radius: 1.85rem;
+    
+  }
+  
+  .large .gear-inner {
+    border-radius:3.75rem;
+  }
+  
+  .gear.one .gear-inner {
+    animation: counter-clockwise 3s infinite linear;
+  }
+  
+  .gear.two .gear-inner {
+    animation: clockwise 3s infinite linear;
+  }
+  
+  .gear.three .gear-inner {
+    animation: counter-clockwise 3s infinite linear;
+  }
+  
+  .gear.four .gear-inner {
+    animation: counter-clockwise 6s infinite linear;
+  }
+  
+  .gear-inner .bar {
+    background:colors.$col-black-old;
+    height:1rem;
+    width:4.75rem;
+    position: absolute;
+    left: 50%;
+    margin-left:-2.4rem;
+    top: 50%;
+    margin-top: -8px;
+    border-radius: 2px;
+
+  }
+  
+  .large .gear-inner .bar {
+    margin-left: -4.25rem;
+    width:8.5rem;
+  }
+  
+  .gear-inner .bar:nth-child(2) {
+    transform: rotate(60deg);
+  }
+  
+  .gear-inner .bar:nth-child(3) {
+    transform: rotate(120deg);
+  }
+  
+  .gear-inner .bar:nth-child(4) {
+    transform: rotate(90deg);
+  }
+  
+  .gear-inner .bar:nth-child(5) {
+    transform: rotate(30deg);
+  }
+  
+  .gear-inner .bar:nth-child(6) {
+    transform: rotate(150deg);
+  }

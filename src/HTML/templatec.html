@@ -17,23 +17,32 @@
     </header>
     <main class="tempc__main">
         <article class="tempc__main__card">
-            <form>
-                <h2>Please login</h2>
-                <input type="mail" name="username" placeholder="Email Address" required="" autofocus=""
-                    autocomplete="email" />
-                <input type="password" name="password" placeholder="Password" required=""
-                    autocomplete="current-password" />
+            <form class="tempc__main__card__item1">
+                <legend><h2>Please login</h2></legend>
+                <input type="mail" name="username" placeholder="Email Address" autocomplete="email" />
+                <input type="password" name="password" placeholder="Password" autocomplete="current-password" />
                     <div class="container">
                         <label for="rem">Remenber me
                         <input checked="checked" type="checkbox" id="rem">
                         <div class="checkmark"></div></label>
                       </div>
-                       
-
                       <div class="btn">
                         <button class="btn2">login
                         </button>
                       </div>
+            </form>
+        
+
+        </article >
+
+        <article class="tempc__main__card">
+            <form action="">
+                <legend><h2>Enregistrement</h2></legend>
+                <label for="mail">Adresse Email </label>
+                <input type="email" id="mail"  autocomplete="email">
+                <label for="name"></label>
+                <input type="text" id="name" autocomplete="name">
+
             </form>
 
         </article>

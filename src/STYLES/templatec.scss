@@ -29,15 +29,15 @@
         /* style card base*/
         &__card {
             background: linear-gradient(145deg, #272727, #202020);
-
             box-shadow: 5px 5px 10px #0e0e0e,
                 -5px -5px 10px #3a3a3a;
             border-radius: 1rem;
             max-width: 18rem;
             margin: auto;
+            margin-top: 1rem;
 
             /* style global form */
-            form {
+            &__item1 {
                 display: flex;
                 flex-direction: column;
                 align-items: left;
@@ -135,7 +135,7 @@
                     transition: all .3s;
 
                     &:hover {
-                        box-shadow: 1px 1px 30px 1px colors.$col-vert,1px 1px 30px 1px colors.$col-violet;
+                        box-shadow: 1px 1px 30px 1px colors.$col-vert, 1px 1px 30px 1px colors.$col-violet;
                     }
                 }
 
@@ -162,6 +162,9 @@
                     }
                 }
 
+            }
+            &__item2 {
+                
             }
 
         }
