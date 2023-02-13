@@ -25,6 +25,8 @@
     &__main {
         width: 90%;
         margin: auto;
+        display: flex;
+        flex-wrap: wrap;
 
         /* style card base*/
         &__card {
@@ -37,7 +39,7 @@
             margin-top: 1rem;
 
             /* style global form */
-            &__item1 {
+            &__one {
                 display: flex;
                 flex-direction: column;
                 align-items: left;
@@ -163,9 +165,70 @@
                 }
 
             }
-            &__item2 {
+            &__two {
                 
             }
+            &__three{
+                padding: 1rem;
+                position: relative;
+                h2{
+                    position: absolute;
+                    z-index:10;
+                    top: 6.5rem;
+                    left: 3.5rem;
+                    text-align: center;
+                    padding: 0.5rem;
+                    font-weight: bold;
+                    font-size: 1.8em;
+                    text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.3),
+                        -1px -1px 0.25rem rgba(255, 255, 255, 0.3)
+                   
+                }
+                .bordure{
+                    width: 14rem;
+                    height: 14rem;
+                    margin: auto;
+                    border-radius: 50%;
+                    background: linear-gradient(145deg, #272727, #202020);
+            box-shadow: 5px 5px 10px #0e0e0e,
+                -5px -5px 10px #3a3a3a;
+                    position: relative;
+
+
+                }
+                .loader {
+                    width: 12rem;
+                    height: 12rem;
+                    margin: auto;
+                    border-radius: 50%;
+                    background-image: linear-gradient(163deg, colors.$col-vert 0%, colors.$col-violet 100%);
+                    position: absolute;
+                    top: 1rem;
+                    left: 1rem;
+                    animation: clockwise 1.7s linear infinite;
+                   
+
+
+                   
+                  }
+                  
+                  .cachecentral {
+                    width: 10rem;
+                    height: 10rem;
+                    margin: auto;
+                    border-radius: 50%;
+                    background: linear-gradient(145deg, #272727, #202020);
+                  
+                    position: absolute;
+                    top: 1rem;
+                    left: 1rem; 
+                
+                    
+                  }
+
+
+            }
+
 
         }
 
