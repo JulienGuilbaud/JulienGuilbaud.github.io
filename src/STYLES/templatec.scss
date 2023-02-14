@@ -51,7 +51,7 @@
                     font-weight: bold;
                     font-size: 1.5em;
                     text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.3),
-                        -1px -1px 0.25rem rgba(255, 255, 255, 0.3)
+                        -1px -1px 0.25rem rgba(255, 255, 255, 0.3);
                 }
 
                 /* style custom input mail and pswd */
@@ -63,6 +63,15 @@
                     background: #242424;
                     box-shadow: inset 5px 5px 10px #0e0e0e,
                         inset -5px -5px 10px #3a3a3a;
+                }
+                h3{
+                    position: absolute;
+                    left: 2.2rem;
+                    text-align: center;
+                    font-weight: bold;
+                    font-size: 1.1em;
+                    text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.3),
+                        -1px -1px 0.25rem rgba(255, 255, 255, 0.3)  
                 }
 
                 /* Hide the default checkbox */
@@ -80,11 +89,6 @@
                     cursor: pointer;
                     font-size: 20px;
                     user-select: none;
-                    padding: 0.5rem;
-                    font-size: 1.1em;
-                    font-weight: bold;
-                    text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.3),
-                        -2px -2px 0.25rem rgba(255, 255, 255, 0.3)
                 }
 
                 /* Create a custom checkbox */
@@ -94,34 +98,28 @@
                     left: 0;
                     height: 1.3em;
                     width: 1.3em;
-                    background: #606062;
-                    border-radius: 7px;
-                    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.30), 0px 1px 1px rgba(0, 0, 0, 0.5);
+                    border-radius: 25%;
+                    background: linear-gradient(145deg, #1c1c1c, #171717);
+                    box-shadow: 5px 5px 10px #0a0a0a,
+                        -5px -5px 10px #2a2a2a;
+                    transition-duration: 0.5s;
                 }
 
-                /* When the checkbox is checked*/
-                .container input:checked~.checkmark {
-                    background-image: linear-gradient(#255CD2, #1D52C1)
-                }
-
-                /* Create the checkmark/indicator (hidden when not checked) */
                 .checkmark:after {
                     content: "";
                     position: absolute;
-                    display: none;
+                    opacity: 0;
                 }
 
-                /* Show the checkmark when checked */
                 .container input:checked~.checkmark:after {
-                    display: block;
+                    opacity: 1;
                 }
 
-                /* Style the checkmark/indicator */
                 .container .checkmark:after {
                     left: 0.45em;
-                    top: 0.20em;
-                    width: 0.24em;
-                    height: 0.6em;
+                    top: 0.25em;
+                    width: 0.25em;
+                    height: 0.5em;
                     border: solid white;
                     border-width: 0 0.15em 0.15em 0;
                     transform: rotate(45deg);
@@ -165,15 +163,96 @@
                 }
 
             }
+
             &__two {
-                
+
+                h2{
+                    text-align: center;
+                    padding: 0.5rem;
+                    font-weight: bold;
+                    font-size: 1.5em;
+                    text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.3),
+                        -1px -1px 0.25rem rgba(255, 255, 255, 0.3);
+                }
+                fieldset{
+                    padding: 1rem;
+                    background: linear-gradient(145deg, #272727, #202020);
+                    box-shadow: 5px 5px 10px #0e0e0e,
+                        -5px -5px 10px #3a3a3a;
+                    border-radius:0.5rem;
+                    margin: 0.75rem;
+                    label{
+                        text-align: center;
+                    padding: 0.5rem;
+                    font-weight: bold;
+                    font-size: 1em;
+                    text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.3),
+                        -1px -1px 0.25rem rgba(255, 255, 255, 0.3);
+
+                    }
+                    input{
+                        margin: 0.5rem;
+                        padding: 0.5rem;
+                        border-radius: 1rem;
+                        border: transparent;
+                        background: #242424;
+                        box-shadow: inset 5px 5px 10px #0e0e0e,
+                            inset -5px -5px 10px #3a3a3a;
+
+                    }
+                    .label {
+                        display: inline-flex;
+                        align-items: center;
+                        cursor: pointer;
+                        color: #394a56;
+                      }
+                      
+                      .label-text {
+                        margin-left: 16px;
+                      }
+                      
+                      .toggle {
+                        isolation: isolate;
+                        position: relative;
+                        height: 30px;
+                        width: 60px;
+                        border-radius: 15px;
+                        overflow: hidden;
+                        box-shadow: -8px -4px 8px 0px #ffffff,
+                          8px 4px 12px 0px #d1d9e6,
+                          4px 4px 4px 0px #d1d9e6 inset,
+                          -4px -4px 4px 0px #ffffff inset;
+                      }
+                      
+                      .toggle-state {
+                        display: none;
+                      }
+                      
+                      .indicator {
+                        height: 100%;
+                        width: 200%;
+                        background: #ecf0f3;
+                        border-radius: 15px;
+                        transform: translate3d(-75%, 0, 0);
+                        transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
+                        box-shadow: -8px -4px 8px 0px #ffffff,
+                          8px 4px 12px 0px #d1d9e6;
+                      }
+                      
+                      .toggle-state:checked ~ .indicator {
+                        transform: translate3d(25%, 0, 0);
+                      }
+                }
+
             }
-            &__three{
+
+            &__three {
                 padding: 1rem;
                 position: relative;
-                h2{
+
+                h2 {
                     position: absolute;
-                    z-index:10;
+                    z-index: 10;
                     top: 6.5rem;
                     left: 3.5rem;
                     text-align: center;
@@ -182,20 +261,21 @@
                     font-size: 1.8em;
                     text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.3),
                         -1px -1px 0.25rem rgba(255, 255, 255, 0.3)
-                   
                 }
-                .bordure{
+
+                .bordure {
                     width: 14rem;
                     height: 14rem;
                     margin: auto;
                     border-radius: 50%;
                     background: linear-gradient(145deg, #272727, #202020);
-            box-shadow: 5px 5px 10px #0e0e0e,
-                -5px -5px 10px #3a3a3a;
+                    box-shadow: 5px 5px 10px #0e0e0e,
+                        -5px -5px 10px #3a3a3a;
                     position: relative;
 
 
                 }
+
                 .loader {
                     width: 12rem;
                     height: 12rem;
@@ -205,26 +285,26 @@
                     position: absolute;
                     top: 1rem;
                     left: 1rem;
-                    animation: clockwise 1.7s linear infinite;
-                   
+                    animation: clockwise 1s linear infinite;
 
 
-                   
-                  }
-                  
-                  .cachecentral {
+
+
+                }
+
+                .cachecentral {
                     width: 10rem;
                     height: 10rem;
                     margin: auto;
                     border-radius: 50%;
                     background: linear-gradient(145deg, #272727, #202020);
-                  
+
                     position: absolute;
                     top: 1rem;
-                    left: 1rem; 
-                
-                    
-                  }
+                    left: 1rem;
+
+
+                }
 
 
             }

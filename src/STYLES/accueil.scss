@@ -48,19 +48,27 @@
         border: 0.2rem colors.$col-black-old solid;
         margin: 0.5rem;
 
-        a{
+        a {
             padding: 0.5rem;
             margin: 0.5rem;
         }
 
     }
 
-
-    summary {
-        font-size: 1.5em;
-        margin: 1rem;
-
+    details {
+        margin-bottom: 2rem;
+        summary {
+            font-size: 1.5em;
+            margin: 1rem;   
+        }
+        p{
+            margin-right: 0.5rem;
+        }
+     
     }
+
+
+
 
 
 

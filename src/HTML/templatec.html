@@ -23,12 +23,13 @@
                 </legend>
                 <input type="mail" name="username" placeholder="Email Address" autocomplete="email" />
                 <input type="password" name="password" placeholder="Password" autocomplete="current-password" />
-                <div class="container">
-                    <label for="rem">Remenber me
-                        <input checked="checked" type="checkbox" id="rem">
-                        <div class="checkmark"></div>
+                <label class="container">
+                    <label for="remenber">
+                        <h3>remenber me</h3>
                     </label>
-                </div>
+                    <input type="checkbox" checked="checked" id="remember">
+                    <div class="checkmark"></div>
+                </label>
                 <div class="btn">
                     <button class="btn2">login
                     </button>
@@ -43,10 +44,37 @@
                 <legend>
                     <h2>Enregistrement</h2>
                 </legend>
-                <label for="mail">Adresse Email </label>
-                <input type="email" id="mail" autocomplete="email">
-                <label for="name"></label>
-                <input type="text" id="name" autocomplete="name">
+
+                <fieldset>
+                    <label for="newmail">Adresse Email :</label>
+                    <input type="email" id="newmail" autocomplete="email">
+                </fieldset>
+
+                <fieldset>
+                    <label for="newname">Votre Nom :
+                        <input type="text" id="newname" autocomplete="name"></label>
+                </fieldset>
+                <label class="label">
+                    <div class="toggle">
+                        <input class="toggle-state" type="checkbox" name="check" value="check">
+                        <div class="indicator"></div>
+                    </div>
+                </label>
+
+                <label class="label">
+                    <div class="toggle">
+                        <input class="toggle-state" type="checkbox" name="check" value="check">
+                        <div class="indicator"></div>
+                    </div>
+                </label>
+                
+
+
+
+
+
+                
+
 
             </form>
 
