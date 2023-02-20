@@ -1,11 +1,14 @@
-
-import   './icone.js';
-
-
 /* icone feather */
+import './icone.js';
 
+/* impression */
 
+document.getElementById('print').addEventListener('click', () => {
 
+  console.log('clic sur le bouton imprimer la page');
+
+  window.print();
+});
 
 /* effet scramble matrix */
 
@@ -66,10 +69,7 @@ class TextScramble {
 /* phrase culte */
 
 const phrases = [
-  
 
-
-  
   'Hello World.',
 
   'Bonjour le monde.'
