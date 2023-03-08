@@ -1,0 +1,76 @@
+.container-respiration{
+    background-color: rgba(0, 0, 0, 0.45);
+    width: 60%;
+    height: 50%;
+    padding: 1rem;
+    border-radius: 1rem;
+    display:flex;
+    flex-direction: column;
+    position: absolute;
+    top:10rem;
+    left: 15vw;
+    z-index: 2;
+    
+
+    .barre-respiration{
+        background-color: rgba(245, 222, 179, 0.75);
+        width: 60%;
+    height: 10%;
+    position: absolute;
+    border-radius: 4rem;
+    bottom: 0;
+    left: 13vw;
+
+    animation: 5s linear  infinite alternate tempo;
+    
+
+    }
+    .btnclose{
+        width: 2rem;
+        border-radius: 0.5rem;
+        border: transparent;
+        font-size: 1em;
+        font-weight: bold;
+
+    }
+    .ordre-respiration{
+        text-align: center;
+        font-size: 2em;
+        color:aliceblue;
+        text-transform: uppercase;
+        
+        animation: 5s linear  infinite alternate battement;
+        
+    }
+    .rebour{
+        position: absolute;
+        width: 50%;
+        
+        bottom: 0;
+        left: 26vw;
+        font-size: 2em;
+        z-index: 1;
+
+    }
+
+
+}
+@keyframes tempo {
+    from{
+        height: 10%;
+        background-color:palevioletred;
+    }
+    to {
+
+        height: 100%;
+        background-color:palegreen;
+    }
+}
+.hidden{
+    display: none;
+    
+}
+@keyframes battement {
+    from{transform: scale(1);}
+    to {transform: scale(1.5);}
+}
