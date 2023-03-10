@@ -1,5 +1,9 @@
-@use "./colors.scss";
-@use "./mixin";
+
+@use "../../STYLES/mixin.scss";
+@use "../../STYLES/global.scss";
+@use 'reset-css';
+
+
 
 .temp {
   background: 
