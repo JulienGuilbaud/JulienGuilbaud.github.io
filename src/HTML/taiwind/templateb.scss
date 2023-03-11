@@ -1,5 +1,8 @@
-@use "./colors.scss";
-@use "./mixin";
+@use "../../STYLES/colors.scss";
+@use "../../STYLES/global.scss";
+@use "../../STYLES/mixin.scss";
+@use 'reset-css';
+
 
 .tempb {
     font-family: lexend;
