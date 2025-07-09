@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord : Analyse de Prix des VTT et Motos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans">
+
+    <div class="min-h-screen">
+        <!-- En-tête -->
+        <header class="bg-white shadow-sm sticky top-0 z-20">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-4">
+                    <h1 class="text-2xl font-bold text-slate-800">Analyse de Marché</h1>
+                    <div class="text-sm text-slate-500">
+                        Dernière mise à jour : <span id="lastUpdated">9 juillet 2025</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="container mx-auto p-4 sm:p-6 lg:p-8">
+            <!-- Section des KPIs et Graphique d'ensemble -->
+            <section id="overview" class="mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- KPI Cards -->
+                    <div class="bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
+                        <h3 class="text-slate-500 text-sm font-medium">Modèle le Moins Cher</h3>
+                        <p id="cheapestModelName" class="text-2xl font-bold text-emerald-600 mt-1">-</p>
+                        <p id="cheapestModelPrice" class="text-sm text-slate-400">-</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
+                        <h3 class="text-slate-500 text-sm font-medium">Modèle le Plus Cher</h3>
+                        <p id="priciestModelName" class="text-2xl font-bold text-red-600 mt-1">-</p>
+                        <p id="priciestModelPrice" class="text-sm text-slate-400">-</p>
+                    </div>
+                     <!-- Chart -->
+                    <div class="bg-white p-6 rounded-xl shadow-md md:col-span-2 lg:col-span-2">
+                        <h3 class="text-slate-500 text-sm font-medium mb-2">Composition du Marché</h3>
+                        <div class="relative h-32">
+                            <canvas id="marketCompositionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Filtres -->
+            <div class="mb-6 flex space-x-2 bg-white p-2 rounded-xl shadow-sm max-w-sm mx-auto">
+                <button data-filter="all" class="filter-btn active w-full text-center py-2 px-4 rounded-lg font-medium text-sm transition-colors duration-300 bg-blue-600 text-white shadow-md">Tous</button>
+                <button data-filter="essence" class="filter-btn w-full text-center py-2 px-4 rounded-lg font-medium text-sm transition-colors duration-300">Essence</button>
+                <button data-filter="electrique" class="filter-btn w-full text-center py-2 px-4 rounded-lg font-medium text-sm transition-colors duration-300">Électrique</button>
+            </div>
+
+            <!-- Grille des produits -->
+            <div id="vehicleGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Les cartes de véhicules seront insérées ici par JS -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal pour les détails des vendeurs -->
+    <div id="vendorModal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col transform scale-95 transition-transform duration-300">
+            <header class="flex justify-between items-center p-4 border-b border-slate-200">
+                <h2 id="modalTitle" class="text-lg font-bold">Détails des Prix</h2>
+                <button id="closeModalBtn" class="text-slate-400 hover:text-slate-600 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </header>
+            <div id="modalBody" class="p-6 overflow-y-auto">
+                <!-- Contenu du modal inséré par JS -->
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
