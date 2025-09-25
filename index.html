@@ -3,93 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tableau de Bord : Analyse de Prix des VTT et Motos</title>
+    <title>Tableau de Bord - Vue d'Ensemble des Graphiques</title>
+    <!-- Chosen Palette: Professional & Calm (Slate, Sky, Emerald, Amber, Violet, Rose) -->
+    <!-- Application Structure Plan: A comprehensive single-page dashboard. The structure begins with high-level KPIs for an immediate summary. Below, a 2x2 grid layout organizes the key visualizations for simultaneous analysis: a line chart for trends, a donut chart for category contributions (which acts as a filter), and a stacked bar chart for monthly revenue composition. The detailed data table remains at the bottom. This consolidated structure allows for a holistic view of the business forecasts, enabling comparison across different visual formats without scrolling or navigation, which is ideal for strategic analysis. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: KPIs (Total Revenue, Best Month, Top Category). -> Goal: Inform -> Viz/Presentation: KPI Cards. -> Interaction: Dynamic updates on filter. -> Justification: Quick, scannable summary. -> Library/Method: Vanilla JS.
+        - Report Info: Monthly sales forecasts across categories. -> Goal: Compare Trends -> Viz/Presentation: Multi-Line Chart. -> Interaction: Filterable by donut chart clicks. -> Justification: Shows performance over time. -> Library/Method: Chart.js (Canvas).
+        - Report Info: Annual revenue contribution per category. -> Goal: Compare Proportions -> Viz/Presentation: Donut Chart. -> Interaction: Acts as the primary filter control. -> Justification: Clarifies the weight of each category. -> Library/Method: Chart.js (Canvas).
+        - Report Info: Monthly revenue composition. -> Goal: Organize/Compare -> Viz/Presentation: Stacked Bar Chart. -> Interaction: Updates based on donut chart filter. -> Justification: Shows how different categories contribute to each month's total. -> Library/Method: Chart.js (Canvas).
+        - Report Info: Full data table. -> Goal: Inform -> Viz/Presentation: HTML Table. -> Interaction: Static. -> Justification: Provides granular data access. -> Library/Method: HTML/Tailwind.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .chart-container { position: relative; width: 100%; height: 28rem; max-height: 60vh; }
+        .kpi-card { transition: all 0.3s ease-in-out; }
+        .kpi-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+    </style>
 </head>
-<body class="bg-slate-100 text-slate-800 font-sans">
+<body class="bg-slate-50 text-slate-800">
 
-    <div class="min-h-screen">
-        <!-- En-tête -->
-        <header class="bg-white shadow-sm sticky top-0 z-20">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center py-4">
-                    <h1 class="text-2xl font-bold text-slate-800">Analyse de Marché</h1>
-                    <div class="text-sm text-slate-500">
-                        Dernière mise à jour : <span id="lastUpdated">9 juillet 2025</span>
-                    </div>
-                </div>
-            </div>
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="mb-8">
+            <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight">Vue d'Ensemble des Graphiques</h1>
+            <p class="mt-2 text-lg text-slate-600">Analyse consolidée des prévisions de Septembre 2025 à Septembre 2026.</p>
         </header>
 
-        <main class="container mx-auto p-4 sm:p-6 lg:p-8">
-            <!-- Section des KPIs et Graphique d'ensemble -->
-            <section id="overview" class="mb-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- KPI Cards -->
-                    <div class="bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
-                        <h3 class="text-slate-500 text-sm font-medium">Modèle le Moins Cher</h3>
-                        <p id="cheapestModelName" class="text-2xl font-bold text-emerald-600 mt-1">-</p>
-                        <p id="cheapestModelPrice" class="text-sm text-slate-400">-</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
-                        <h3 class="text-slate-500 text-sm font-medium">Modèle le Plus Cher</h3>
-                        <p id="priciestModelName" class="text-2xl font-bold text-red-600 mt-1">-</p>
-                        <p id="priciestModelPrice" class="text-sm text-slate-400">-</p>
-                    </div>
-                     <!-- Chart -->
-                    <div class="bg-white p-6 rounded-xl shadow-md md:col-span-2 lg:col-span-2">
-                        <h3 class="text-slate-500 text-sm font-medium mb-2">Composition du Marché</h3>
-                        <div class="relative h-32">
-                            <canvas id="marketCompositionChart"></canvas>
-                        </div>
-                    </div>
+        <main class="space-y-8">
+            <section id="kpi-section" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="kpi-card bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h2 class="text-sm font-medium text-slate-500">Revenu Annuel Total Projeté</h2>
+                    <p id="total-revenue" class="text-4xl font-bold text-slate-900 mt-2">Chargement...</p>
+                </div>
+                <div class="kpi-card bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h2 class="text-sm font-medium text-slate-500">Mois le Plus Performant</h2>
+                    <p id="best-month" class="text-4xl font-bold text-slate-900 mt-2">Chargement...</p>
+                </div>
+                <div class="kpi-card bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h2 class="text-sm font-medium text-slate-500">Catégorie Principale</h2>
+                    <p id="top-category" class="text-4xl font-bold text-slate-900 mt-2">Chargement...</p>
                 </div>
             </section>
             
-            <!-- Filtres -->
-            <div class="mb-6 flex space-x-2 bg-white p-2 rounded-xl shadow-sm max-w-sm mx-auto">
-                <button data-filter="all" class="filter-btn active w-full text-center py-2 px-4 rounded-lg font-medium text-sm transition-colors duration-300 bg-blue-600 text-white shadow-md">Tous</button>
-                <button data-filter="essence" class="filter-btn w-full text-center py-2 px-4 rounded-lg font-medium text-sm transition-colors duration-300">Essence</button>
-                <button data-filter="electrique" class="filter-btn w-full text-center py-2 px-4 rounded-lg font-medium text-sm transition-colors duration-300">Électrique</button>
-            </div>
+            <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h2 id="main-chart-title" class="text-xl font-bold text-slate-900 mb-4">Évolution des Revenus Mensuels</h2>
+                    <div class="chart-container">
+                        <canvas id="mainSalesChart"></canvas>
+                    </div>
+                </div>
 
-            <!-- Grille des produits -->
-            <div id="vehicleGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <!-- Les cartes de véhicules seront insérées ici par JS -->
-            </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h2 class="text-xl font-bold text-slate-900 mb-4">Répartition par Catégorie</h2>
+                     <p class="text-sm text-slate-500 mb-4">Cliquez pour filtrer le tableau de bord.</p>
+                    <div class="chart-container">
+                        <canvas id="categoryDonutChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h2 id="stacked-bar-title" class="text-xl font-bold text-slate-900 mb-4">Composition des Revenus Mensuels</h2>
+                    <div class="chart-container">
+                        <canvas id="stackedBarChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-xl font-bold text-slate-900 mb-4">Détail des Prévisions Mensuelles</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left text-slate-500">
+                        <thead class="text-xs text-slate-700 uppercase bg-slate-100" id="table-head">
+                        </thead>
+                        <tbody id="table-body" class="divide-y divide-slate-200">
+                        </tbody>
+                        <tfoot id="table-foot" class="font-semibold text-slate-800 bg-slate-100">
+                        </tfoot>
+                    </table>
+                </div>
+            </section>
         </main>
+
+        <footer class="text-center mt-12 text-sm text-slate-500">
+            <p>Rapport généré le <span id="report-date"></span>.</p>
+        </footer>
     </div>
 
-    <!-- Modal pour les détails des vendeurs -->
-    <div id="vendorModal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50 hidden opacity-0 transition-opacity duration-300">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col transform scale-95 transition-transform duration-300">
-            <header class="flex justify-between items-center p-4 border-b border-slate-200">
-                <h2 id="modalTitle" class="text-lg font-bold">Détails des Prix</h2>
-                <button id="closeModalBtn" class="text-slate-400 hover:text-slate-600 transition-colors">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-            </header>
-            <div id="modalBody" class="p-6 overflow-y-auto">
-                <!-- Contenu du modal inséré par JS -->
-            </div>
-        </div>
-    </div>
+<script>
+    const salesData = {
+        labels: ["Sept. 2025", "Oct. 2025", "Nov. 2025", "Déc. 2025", "Janv. 2026", "Fév. 2026", "Mars 2026", "Avril 2026", "Mai 2026", "Juin 2026", "Juil. 2026", "Août 2026"],
+        categories: [
+            { name: "Pièces d'Occasion", data: [64500, 77000, 85500, 135500, 161000, 161000, 118500, 74000, 65500, 58500, 78000, 67000], color: 'rgb(59, 130, 246)' },
+            { name: "Pièces Neuves", data: [20000, 45000, 48000, 51000, 60000, 85000, 58000, 42000, 55000, 32000, 40000, 41000], color: 'rgb(16, 185, 129)' },
+            { name: "Véhicules Chinois", data: [22700, 12700, 13500, 37200, 9900, 9300, 29500, 108000, 100500, 75000, 59200, 49500], color: 'rgb(168, 85, 247)' },
+            { name: "Véhicules d'Occasion", data: [11000, 12000, 19000, 18000, 14000, 32000, 25000, 11500, 5000, 11000, 6000, 11000], color: 'rgb(234, 179, 8)' },
+            { name: "Pièces Chinoises", data: [5510, 3390, 3570, 6500, 2730, 1040, 2200, 6920, 8550, 7930, 10500, 9350], color: 'rgb(244, 63, 94)' },
+            { name: "Commissions U-Haul", data: [4500, 2200, 1800, 1200, 1000, 1300, 2000, 2800, 3800, 5000, 6500, 6200], color: 'rgb(239, 68, 68)' }
+        ]
+    };
 
-    <script type="module" src="js/app.js"></script>
+    const nextMonthData = {
+        "Pièces d'Occasion": 65500,
+        "Pièces Neuves": 22000,
+        "Véhicules Chinois": 22200,
+        "Véhicules d'Occasion": 11500,
+        "Pièces Chinoises": 5780,
+        "Commissions U-Haul": 4800,
+    };
+
+    let mainSalesChart, categoryDonutChart, stackedBarChart;
+    let activeCategoryIndex = -1;
+
+    const formatCurrency = (value) => new Intl.NumberFormat('fr-CA', { style: 'currency', currency: 'CAD', maximumFractionDigits: 0 }).format(value);
+
+    function calculateTotals() {
+        salesData.categories.forEach(cat => {
+            cat.total = cat.data.reduce((sum, val) => sum + val, 0);
+        });
+        salesData.monthlyTotals = salesData.labels.map((_, i) => salesData.categories.reduce((sum, cat) => sum + cat.data[i], 0));
+        salesData.totalRevenue = salesData.monthlyTotals.reduce((sum, val) => sum + val, 0);
+        const maxMonthValue = Math.max(...salesData.monthlyTotals);
+        salesData.bestMonthIndex = salesData.monthlyTotals.indexOf(maxMonthValue);
+        const topCategory = salesData.categories.reduce((prev, current) => (prev.total > current.total) ? prev : current);
+        salesData.topCategoryIndex = salesData.categories.indexOf(topCategory);
+    }
+    
+    function populateTable() {
+        const tableHead = document.getElementById('table-head');
+        const tableBody = document.getElementById('table-body');
+        const tableFoot = document.getElementById('table-foot');
+        let headHTML = '<tr><th scope="col" class="px-6 py-3">Catégorie de Revenus</th>';
+        salesData.labels.forEach(label => headHTML += `<th scope="col" class="px-6 py-3 text-right">${label.replace('.','')}</th>`);
+        headHTML += `<th scope="col" class="px-6 py-3 text-right">Sept. 2026</th><th scope="col" class="px-6 py-3 text-right font-bold">Total Annuel</th></tr>`;
+        tableHead.innerHTML = headHTML;
+        let bodyHTML = '';
+        salesData.categories.forEach(cat => {
+            bodyHTML += `<tr class="bg-white hover:bg-slate-50"><th scope="row" class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap">${cat.name}</th>`;
+            cat.data.forEach(val => bodyHTML += `<td class="px-6 py-4 text-right">${formatCurrency(val)}</td>`);
+            bodyHTML += `<td class="px-6 py-4 text-right">${formatCurrency(nextMonthData[cat.name])}</td><td class="px-6 py-4 text-right font-semibold">${formatCurrency(cat.total)}</td></tr>`;
+        });
+        tableBody.innerHTML = bodyHTML;
+        const totalNextMonth = Object.values(nextMonthData).reduce((sum, val) => sum + val, 0);
+        let footHTML = '<tr><th scope="row" class="px-6 py-4">Total Mensuel</th>';
+        salesData.monthlyTotals.forEach(total => footHTML += `<td class="px-6 py-4 text-right">${formatCurrency(total)}</td>`);
+        footHTML += `<td class="px-6 py-4 text-right">${formatCurrency(totalNextMonth)}</td><td class="px-6 py-4 text-right text-lg">${formatCurrency(salesData.totalRevenue)}</td></tr>`;
+        tableFoot.innerHTML = footHTML;
+    }
+
+    function updateDashboard(categoryIndex = -1) {
+        activeCategoryIndex = categoryIndex;
+        let lineTitle, stackedTitle, revenue, bestMonth, topCategoryName;
+
+        if (categoryIndex === -1) {
+            const bestMonthValue = salesData.monthlyTotals[salesData.bestMonthIndex];
+            lineTitle = 'Évolution des Revenus Mensuels par Catégorie';
+            stackedTitle = 'Composition des Revenus Mensuels';
+            revenue = salesData.totalRevenue;
+            bestMonth = `${salesData.labels[salesData.bestMonthIndex].replace('.','')} (${formatCurrency(bestMonthValue)})`;
+            topCategoryName = salesData.categories[salesData.topCategoryIndex].name;
+            mainSalesChart.data.datasets = salesData.categories.map(cat => ({
+                label: cat.name,
+                data: cat.data,
+                borderColor: cat.color,
+                backgroundColor: 'transparent',
+                fill: false,
+                tension: 0.3,
+                borderWidth: 2
+            }));
+            stackedBarChart.data.datasets = salesData.categories.map(cat => ({
+                label: cat.name,
+                data: cat.data,
+                backgroundColor: cat.color,
+            }));
+        } else {
+            const category = salesData.categories[categoryIndex];
+            const maxMonthValue = Math.max(...category.data);
+            const bestMonthIndex = category.data.indexOf(maxMonthValue);
+            lineTitle = `Évolution: ${category.name}`;
+            stackedTitle = `Composition des Revenus (Focus: ${category.name})`;
+            revenue = category.total;
+            bestMonth = `${salesData.labels[bestMonthIndex].replace('.','')} (${formatCurrency(maxMonthValue)})`;
+            topCategoryName = category.name;
+            mainSalesChart.data.datasets = [{
+                label: category.name,
+                data: category.data,
+                borderColor: category.color,
+                backgroundColor: category.color.replace('rgb', 'rgba').replace(')', ', 0.1)'),
+                fill: true,
+                tension: 0.3,
+                borderWidth: 3
+            }];
+             stackedBarChart.data.datasets = salesData.categories.map((cat, index) => ({
+                label: cat.name,
+                data: cat.data,
+                backgroundColor: index === categoryIndex ? cat.color : cat.color.replace('rgb', 'rgba').replace(')', ', 0.2)'),
+            }));
+        }
+
+        document.getElementById('main-chart-title').innerText = lineTitle;
+        document.getElementById('stacked-bar-title').innerText = stackedTitle;
+        document.getElementById('total-revenue').innerText = formatCurrency(revenue);
+        document.getElementById('best-month').innerText = bestMonth;
+        document.getElementById('top-category').innerText = topCategoryName;
+
+        mainSalesChart.update();
+        stackedBarChart.update();
+    }
+    
+    function createCharts() {
+        mainSalesChart = new Chart(document.getElementById('mainSalesChart').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: salesData.labels,
+                datasets: []
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 15 } }, tooltip: { mode: 'index', intersect: false, callbacks: { label: (c) => `${c.dataset.label}: ${formatCurrency(c.raw)}` } } }, scales: { y: { ticks: { callback: (val) => formatCurrency(val).replace(',00', '') } } } }
+        });
+
+        categoryDonutChart = new Chart(document.getElementById('categoryDonutChart').getContext('2d'), {
+            type: 'doughnut',
+            data: { labels: salesData.categories.map(c => c.name), datasets: [{ data: salesData.categories.map(c => c.total), backgroundColor: salesData.categories.map(c => c.color), borderWidth: 2, borderColor: '#f9fafb' }] },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 15 }, onClick: (e, legendItem) => { const clickedIndex = categoryDonutChart.data.labels.indexOf(legendItem.text); updateDashboard(activeCategoryIndex === clickedIndex ? -1 : clickedIndex); } }, tooltip: { callbacks: { label: (c) => `${c.label}: ${formatCurrency(c.raw)}` } } } }
+        });
+
+        stackedBarChart = new Chart(document.getElementById('stackedBarChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: salesData.labels,
+                datasets: []
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false, callbacks: { label: (c) => `${c.dataset.label}: ${formatCurrency(c.raw)}` } } }, scales: { x: { stacked: true }, y: { stacked: true, ticks: { callback: (val) => formatCurrency(val).replace(',00', '') } } } }
+        });
+    }
+
+    window.onload = function() {
+        calculateTotals();
+        populateTable();
+        createCharts();
+        updateDashboard(-1);
+        document.getElementById('report-date').innerText = new Date().toLocaleDateString('fr-CA', { year: 'numeric', month: 'long', day: 'numeric' });
+    };
+</script>
 </body>
 </html>
+
+
